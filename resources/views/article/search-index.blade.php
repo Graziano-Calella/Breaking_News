@@ -14,7 +14,16 @@
                     <div class="card-body">
                         <h5 class="card-title">{{$article->title}}</h5>
                         <p class="card-text">{{$article->subtitle}}</p>
-                        <a href="{{route('article.byCategory', ['category' => $article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{$article->category->name}}</a>
+                        <p class="small fst-italic text-capitalize">
+                            @foreach ($article->tags as $tag)
+                                #{{$tag->name}}
+                            @endforeach
+                        </p>
+                        @if ($article->category)
+                                <a href="{{route('article.byCategory', ['category' => $article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{$article->category->name}}</a>
+                            @else
+                                <p class="small text-muted fst-italic text-capitalize">Non categorizzato</p>
+                            @endif
                     </div>
                     <div class="card-footer text-muted d-flex justify-content-between align-items-center">
                         Redatto il {{$article->created_at->format('d/m/Y')}} da 
