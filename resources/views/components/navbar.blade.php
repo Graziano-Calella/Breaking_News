@@ -25,6 +25,7 @@
                                 <li><a class="dropdown-item" href="{{route('revisor.dashboard')}}">Dashboard Revisor</a></li>  
                             @endif
                             @if (Auth::user()->profile && Auth::user()->profile->is_writer)
+                                <li><a class="dropdown-item" href="{{route('writer.dashboard')}}">Dashboard Writer</a></li>
                                 <li><a class="dropdown-item" href="{{route('article.create')}}">Crea articolo</a></li>  
                             @endif
                             <li><hr class="dropdown-divider"></li>

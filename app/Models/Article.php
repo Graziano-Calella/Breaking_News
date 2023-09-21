@@ -12,7 +12,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model
 {
     use HasFactory, Searchable;
-    protected $fillable = ['title', 'subtitle', 'body', 'image', 'is_accepted', 'user_id', 'category_id'];
+    protected $fillable = ['title', 'slug', 'subtitle', 'body', 'image', 'is_accepted', 'user_id', 'category_id'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function readDuration(){
+        $totalWords = str_word_count($this->body);
+        $minutesToRead = round($totalWords / 200);
+
+        return intval($minutesToRead);
+    }
 
     public function toSearchableArray()
     {

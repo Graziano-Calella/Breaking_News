@@ -20,10 +20,11 @@
                             @endforeach
                         </p>
                         @if ($article->category)
-                                <a href="{{route('article.byCategory', ['category' => $article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{$article->category->name}}</a>
-                            @else
-                                <p class="small text-muted fst-italic text-capitalize">Non categorizzato</p>
-                            @endif
+                            <a href="{{route('article.byCategory', ['category' => $article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{$article->category->name}}</a>
+                        @else
+                            <p class="small text-muted fst-italic text-capitalize">Non categorizzato</p>
+                        @endif
+                        <span class="text-muted small fst-italic">- Tempo di lettura {{$article->readDuration()}} min</span>
                     </div>
                     <div class="card-footer text-muted d-flex justify-content-between align-items-center">
                         Redatto il {{$article->created_at->format('d/m/Y')}} da 
